@@ -5,9 +5,8 @@ Edit .env before database migration<br><br>
 <code>php artisan migrate && php artisan db:seed --class=DatabaseSeeder</code><br><br>
 <code>npm run watch</code><br><br>
 
-## integrate langue support in vue<br>
-<a href="https://github.com/xiCO2k/laravel-vue-i18n" target="_blank">laravel-vue-i18n</a><br><br>
-<code>npm i laravel-vue-i18n</code><br>
+## integrate langue support in vue (<a href="https://github.com/xiCO2k/laravel-vue-i18n" target="_blank">laravel-vue-i18n</a>)<br><br>
+<code>npm i laravel-vue-i18n</code><br><br>
 /resources/js/app.js:
 ```js
     import { createApp } from 'vue'
@@ -19,6 +18,16 @@ Edit .env before database migration<br><br>
         .mount('#app');
 ```
 <br>
+
+Usage:
+```html
+<template>
+    <div>
+        <h1>{{ $t('Welcome :name!', { name: 'Francisco' }) }}. </h1>
+        <div>Logged in {{ $tChoice('{1} :count minute ago|[2,*] :count minutes ago', 10) }}</div>
+    </div>
+</template>
+```
 
 ## Admin-O-Matic Series on Youtube
 
