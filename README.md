@@ -1,11 +1,8 @@
 
 #### To run this project make sure you ran these commands
-<code>Clone this repository</code><br><br>
-<code>composer update</code><br><br>
+<code>git clone https://github.com/webomanti/admin_o_matic.git && cd admin_o_matic && composer update && php artisan key:generate && npm install</code><br><br>
 Edit .env before database migration<br><br>
-<code>php artisan key:generate</code><br><br>
-<code>//php artisan migrate</code><br><br>
-<code>npm install</code><br><br>
+<code>php artisan migrate</code><br><br>
 <code>php artisan db:seed --class=DatabaseSeeder</code><br><br>
 <code>npm run watch</code><br><br>
 
