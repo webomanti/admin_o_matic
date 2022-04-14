@@ -6,6 +6,8 @@ Edit .env before database migration<br><br>
 <code>php artisan key:generate</code><br><br>
 <code>//php artisan migrate</code><br><br>
 <code>npm install</code><br><br>
+<code>php artisan db:seed --class=DatabaseSeeder</code><br><br>
+<code>npm run watch</code><br><br>
 
 
 
