@@ -5,7 +5,19 @@ Edit .env before database migration<br><br>
 <code>php artisan migrate && php artisan db:seed --class=DatabaseSeeder</code><br><br>
 <code>npm run watch</code><br><br>
 
+## integrate langue support in vue
+<a href="https://github.com/xiCO2k/laravel-vue-i18n" target="_blank">laravel-vue-i18n</a>
+<code>npm i laravel-vue-i18n</code>
+<code>
+    import { createApp } from 'vue'
+import { i18nVue } from 'laravel-vue-i18n'
 
+createApp()
+    .use(i18nVue, {
+        resolve: lang => import(`../../lang/${lang}.json`),
+    })
+    .mount('#app');
+    </code>
 
 ## Admin-O-Matic Series on Youtube
 
