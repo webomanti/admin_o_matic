@@ -10,14 +10,13 @@ Edit .env before database migration<br><br>
 <code>npm i laravel-vue-i18n</code>
 <code>
     import { createApp } from 'vue'
-import { i18nVue } from 'laravel-vue-i18n'
-
-createApp()
-    .use(i18nVue, {
-        resolve: lang => import(`../../lang/${lang}.json`),
-    })
-    .mount('#app');
-    </code>
+    import { i18nVue } from 'laravel-vue-i18n'
+    createApp()
+        .use(i18nVue, {
+            resolve: lang => import(`../../lang/${lang}.json`),
+        })
+        .mount('#app');
+</code>
 
 ## Admin-O-Matic Series on Youtube
 
