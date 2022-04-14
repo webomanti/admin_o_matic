@@ -1,3 +1,14 @@
+
+#### To run this project make sure you ran these commands
+<code>Clone this repository</code><br><br>
+<code>composer update</code><br><br>
+Edit .env before database migration<br><br>
+<code>php artisan key:generate</code><br><br>
+<code>//php artisan migrate</code><br><br>
+<code>npm install</code><br><br>
+
+
+
 ## Admin-O-Matic Series on Youtube
 
 Admin panel built with Laravel 8, Jetstream, Inertia, AdminLTE, Spatie's Laravel-permissions, Jetstrap, and Bootstrap 4
