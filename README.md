@@ -6,6 +6,7 @@
 #### integrated langue support in vue (<a href="https://github.com/xiCO2k/laravel-vue-i18n" target="_blank">laravel-vue-i18n</a>)<br><br>
 <br>
 Usage:
+
 ```html
 <template>
     <div>
