@@ -14,6 +14,7 @@ window.Toast = Swal.mixin({
 
 // Import modules...
 import { createApp, h } from 'vue';
+import { i18nVue } from 'laravel-vue-i18n'
 import { App as InertiaApp, plugin as InertiaPlugin } from '@inertiajs/inertia-vue3';
 import { InertiaProgress } from '@inertiajs/progress';
 
@@ -31,6 +32,9 @@ createApp({
 })
     .mixin({ methods: { route } })
     .use(InertiaPlugin)
+    .use(i18nVue, {
+        resolve: lang => import(`../lang/${lang}.json`),
+    })
     .component('multiselect', Multiselect)
     .mount(el);
 
