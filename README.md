@@ -1,22 +1,10 @@
 
 ## Install
 #### To run this project make sure you ran these commands
-<code>git clone https://github.com/webomanti/admin_o_matic.git && cd admin_o_matic && composer update && php artisan key:generate && npm install</code><br><br>
+<code>git clone https://github.com/webomanti/admin_o_matic.git && cd admin_o_matic && composer update && php artisan key:generate && npm install && npm i laravel-vue-i18n</code><br><br>
 
-#### integrate langue support in vue (<a href="https://github.com/xiCO2k/laravel-vue-i18n" target="_blank">laravel-vue-i18n</a>)<br><br>
-<code>npm i laravel-vue-i18n</code><br><br>
-/resources/js/app.js:
-```js
-    import { createApp } from 'vue'
-    import { i18nVue } from 'laravel-vue-i18n'
-    createApp()
-        .use(i18nVue, {
-            resolve: lang => import(`../../lang/${lang}.json`),
-        })
-        .mount('#app');
-```
+#### integrated langue support in vue (<a href="https://github.com/xiCO2k/laravel-vue-i18n" target="_blank">laravel-vue-i18n</a>)<br><br>
 <br>
-
 Usage:
 ```html
 <template>
