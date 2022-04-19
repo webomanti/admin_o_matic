@@ -1,7 +1,7 @@
 
 ## Install
 #### To run this project make sure you ran these commands
-<code>git clone https://github.com/webomanti/adminlte_inertia.git && cd adminlte_inertia && composer update && php artisan key:generate && npm install && npm i laravel-vue-i18n</code><br><br>
+<code>git clone https://github.com/webomanti/adminlte_inertia.git && cd adminlte_inertia && composer update && php artisan key:generate && npm install && npm i laravel-vue-i18n && npm audit fix</code><br><br>
 
 #### integrated language support with vue (<a href="https://github.com/xiCO2k/laravel-vue-i18n" target="_blank">laravel-vue-i18n</a>)
 <br>
