@@ -29,13 +29,9 @@ Route::get('/', function () {
     ]);
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->name('dashboard');
+Route::get('dashboard', [AdminDashboardController::class, 'index'])->name('dashboard.index');
 
-Route::prefix('admin')->name('admin.')->middleware(['auth:sanctum', 'verified', 'role: super-admin|admin|moderator|developer'])->group(function() {
-    Route::get('dashboard', [AdminDashboardController::class, 'index'])->name('dashboard.index');
-
+Route::prefix('admin')->name('admin.')->middleware(['auth', 'verified', 'role: super-admin|admin|moderator|developer'])->group(function() {
     Route::resource('admins', AdminController::class)->parameters(['admins' => 'user'])->only(['index', 'update']);
     Route::resource('users', UserController::class)->except(['create', 'show', 'edit']);
     Route::resource('permissions', PermissionController::class)->except(['create', 'show', 'edit']);
