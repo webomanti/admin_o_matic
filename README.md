@@ -2,9 +2,6 @@
 ## Install
 #### To run this project make sure you ran these commands
 <code>git clone https://github.com/webomanti/admin_o_matic.git && cd admin_o_matic && composer update && php artisan key:generate && npm install</code><br><br>
-Edit .env before database migration<br><br>
-<code>php artisan migrate && php artisan db:seed --class=DatabaseSeeder</code><br><br>
-<code>npm run watch</code><br><br>
 
 #### integrate langue support in vue (<a href="https://github.com/xiCO2k/laravel-vue-i18n" target="_blank">laravel-vue-i18n</a>)<br><br>
 <code>npm i laravel-vue-i18n</code><br><br>
@@ -29,6 +26,10 @@ Usage:
     </div>
 </template>
 ```
+
+Edit .env before database migration<br><br>
+<code>php artisan migrate && php artisan db:seed --class=DatabaseSeeder</code><br><br>
+<code>npm run watch</code><br><br>
 
 ## Admin-O-Matic Series on Youtube
 
