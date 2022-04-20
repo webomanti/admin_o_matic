@@ -4,9 +4,7 @@
 <code>git clone https://github.com/webomanti/adminlte_inertia.git && cd adminlte_inertia && composer update && php artisan key:generate && npm install && npm i laravel-vue-i18n && npm audit fix</code><br><br>
 
 #### integrated language support with vue (<a href="https://github.com/xiCO2k/laravel-vue-i18n" target="_blank">laravel-vue-i18n</a>)
-<br>
 Usage:
-
 ```html
 <template>
     <div>
@@ -15,7 +13,7 @@ Usage:
     </div>
 </template>
 ```
-
+<br>
 Edit .env before database migration<br><br>
 <code>php artisan migrate && php artisan db:seed --class=DatabaseSeeder</code><br><br>
 <code>npm run watch</code><br><br>
