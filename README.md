@@ -14,9 +14,11 @@ Usage:
 </template>
 ```
 <br>
-Edit .env before database migration<br><br>
-<code>php artisan migrate && php artisan db:seed --class=DatabaseSeeder</code><br><br>
-<code>npm run watch</code><br><br>
+Edit .env before database migration
+<code>php artisan migrate && php artisan db:seed --class=DatabaseSeeder</code><br>
+
+run npm builder
+<code>npm run watch</code><br>
 
 ## Admin-O-Matic Series on Youtube
 
