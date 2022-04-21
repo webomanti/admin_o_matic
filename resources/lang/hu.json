@@ -4,5 +4,6 @@
     "admins": "Adminisztrátorok",
     "users": "Felhasználók",
     "roles": "Szerepkörök",
-    "permissions": "Jogosultságok"
+    "permissions": "Jogosultságok",
+    "try_login_again": "Próbálj újra bejelentkezni!"
 }
