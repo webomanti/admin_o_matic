@@ -4,5 +4,6 @@
     "admins": "Admins",
     "users": "Users",
     "roles": "Roles",
-    "permissions": "Permissions"
+    "permissions": "Permissions",
+    "try_login_again": "Try to login again!"
 }
