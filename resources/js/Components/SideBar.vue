@@ -11,10 +11,10 @@
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
-                    <img :src="'/images/user2-160x160.jpg'" class="img-circle elevation-2" alt="User Image">
+                    <img :src="$page.props.user_picture" class="img-circle elevation-2" :alt="$page.props.user.name[0]">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">{{ $page.props.user.name }}</a>
+                    <a href="#" class="d-block">{{ $page.props.user.name[0] }} <br> {{ $page.props.user.pager[0] }}</a>
                 </div>
             </div>
 
