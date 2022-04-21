@@ -13,6 +13,8 @@
       </div>
 
       <form @submit.prevent="submit">
+
+        <!--
         <div class="form-group">
           <jet-label for="email" value="Email" />
           <jet-input id="email" type="email" v-model="form.email" required autofocus />
@@ -22,7 +24,13 @@
           <jet-label for="password" value="Password" />
           <jet-input id="password" type="password" v-model="form.password" required autocomplete="current-password" />
         </div>
+        -->
 
+        <div class="form-group">
+          <jet-input id="username" type="username" v-model="form.username" required autofocus />
+        </div>
+
+        <!--
         <div class="form-group">
           <div class="custom-control custom-checkbox">
             <jet-checkbox id="remember_me" name="remember" v-model:checked="form.remember" />
@@ -32,12 +40,15 @@
             </label>
           </div>
         </div>
+        -->
 
         <div class="mb-0">
           <div class="d-flex justify-content-end align-items-baseline">
+            <!--
             <inertia-link v-if="canResetPassword" :href="route('password.request')" class="text-muted mr-3">
               Forgot your password?
             </inertia-link>
+            -->
 
             <jet-button class="ml-4" :class="{ 'text-white-50': form.processing }" :disabled="form.processing">
               Log in
@@ -77,8 +88,9 @@ export default {
   data() {
     return {
       form: this.$inertia.form({
-        email: '',
-        password: '',
+        //email: '',
+        //password: '',
+        username: '',
         remember: false
       })
     }
@@ -87,13 +99,13 @@ export default {
   methods: {
     submit() {
       this.form
-          .transform(data => ({
-            ... data,
-            remember: this.form.remember ? 'on' : ''
-          }))
-          .post(this.route('login'), {
-            onFinish: () => this.form.reset('password'),
-          })
+        .transform(data => ({
+          ... data,
+          remember: this.form.remember ? 'on' : ''
+        }))
+        .post(this.route('login'), {
+          onFinish: () => this.form.reset('password'),
+        })
     }
   }
 }

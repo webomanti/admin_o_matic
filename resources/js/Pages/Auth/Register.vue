@@ -1,98 +1,62 @@
-<template>
-  <jet-authentication-card>
-    <template #logo>
-      <jet-authentication-card-logo />
-    </template>
+<script setup>
+import BreezeButton from '@/Components/Button.vue';
+import BreezeGuestLayout from '@/Layouts/Guest.vue';
+import BreezeInput from '@/Components/Input.vue';
+import BreezeLabel from '@/Components/Label.vue';
+import BreezeValidationErrors from '@/Components/ValidationErrors.vue';
+import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
 
-    <div class="card-body">
+const form = useForm({
+    name: '',
+    email: '',
+    password: '',
+    password_confirmation: '',
+    terms: false,
+});
 
-      <jet-validation-errors class="mb-3" />
-
-      <form @submit.prevent="submit">
-        <div class="form-group">
-          <jet-label for="name" value="Name" />
-          <jet-input id="name" type="text" v-model="form.name" required autofocus autocomplete="name" />
-        </div>
-
-        <div class="form-group">
-          <jet-label for="email" value="Email" />
-          <jet-input id="email" type="email" v-model="form.email" required />
-        </div>
-
-        <div class="form-group">
-          <jet-label for="password" value="Password" />
-          <jet-input id="password" type="password" v-model="form.password" required autocomplete="new-password" />
-        </div>
-
-        <div class="form-group">
-          <jet-label for="password_confirmation" value="Confirm Password" />
-          <jet-input id="password_confirmation" type="password" v-model="form.password_confirmation" required autocomplete="new-password" />
-        </div>
-
-        <div class="form-group" v-if="$page.props.jetstream.hasTermsAndPrivacyPolicyFeature">
-          <div class="custom-control custom-checkbox">
-            <jet-checkbox name="terms" id="terms" v-model:checked="form.terms" />
-
-            <label class="custom-control-label" for="terms">
-              I agree to the <a target="_blank" :href="route('terms.show')">Terms of Service</a> and <a target="_blank" :href="route('policy.show')">Privacy Policy</a>
-            </label>
-          </div>
-        </div>
-
-        <div class="mb-0">
-          <div class="d-flex justify-content-end align-items-baseline">
-            <inertia-link :href="route('login')" class="text-muted mr-3 text-decoration-none">
-              Already registered?
-            </inertia-link>
-
-            <jet-button class="ml-4" :class="{ 'text-white-50': form.processing }" :disabled="form.processing">
-              Register
-            </jet-button>
-          </div>
-        </div>
-      </form>
-    </div>
-  </jet-authentication-card>
-</template>
-
-<script>
-import JetAuthenticationCard from '@/Jetstream/AuthenticationCard'
-import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo'
-import JetButton from '@/Jetstream/Button'
-import JetInput from '@/Jetstream/Input'
-import JetCheckbox from "@/Jetstream/Checkbox";
-import JetLabel from '@/Jetstream/Label'
-import JetValidationErrors from '@/Jetstream/ValidationErrors'
-
-export default {
-  components: {
-    JetAuthenticationCard,
-    JetAuthenticationCardLogo,
-    JetButton,
-    JetInput,
-    JetCheckbox,
-    JetLabel,
-    JetValidationErrors
-  },
-
-  data() {
-    return {
-      form: this.$inertia.form({
-        name: '',
-        email: '',
-        password: '',
-        password_confirmation: '',
-        terms: false,
-      })
-    }
-  },
-
-  methods: {
-    submit() {
-      this.form.post(this.route('register'), {
-        onFinish: () => this.form.reset('password', 'password_confirmation'),
-      })
-    }
-  }
-}
+const submit = () => {
+    form.post(route('register'), {
+        onFinish: () => form.reset('password', 'password_confirmation'),
+    });
+};
 </script>
+
+<template>
+    <BreezeGuestLayout>
+        <Head title="Register" />
+
+        <BreezeValidationErrors class="mb-4" />
+
+        <form @submit.prevent="submit">
+            <div>
+                <BreezeLabel for="name" value="Name" />
+                <BreezeInput id="name" type="text" class="mt-1 block w-full" v-model="form.name" required autofocus autocomplete="name" />
+            </div>
+
+            <div class="mt-4">
+                <BreezeLabel for="email" value="Email" />
+                <BreezeInput id="email" type="email" class="mt-1 block w-full" v-model="form.email" required autocomplete="username" />
+            </div>
+
+            <div class="mt-4">
+                <BreezeLabel for="password" value="Password" />
+                <BreezeInput id="password" type="password" class="mt-1 block w-full" v-model="form.password" required autocomplete="new-password" />
+            </div>
+
+            <div class="mt-4">
+                <BreezeLabel for="password_confirmation" value="Confirm Password" />
+                <BreezeInput id="password_confirmation" type="password" class="mt-1 block w-full" v-model="form.password_confirmation" required autocomplete="new-password" />
+            </div>
+
+            <div class="flex items-center justify-end mt-4">
+                <Link :href="route('login')" class="underline text-sm text-gray-600 hover:text-gray-900">
+                    Already registered?
+                </Link>
+
+                <BreezeButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                    Register
+                </BreezeButton>
+            </div>
+        </form>
+    </BreezeGuestLayout>
+</template>

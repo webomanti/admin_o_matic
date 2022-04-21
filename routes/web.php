@@ -21,17 +21,21 @@ use App\Http\Controllers\Admins\AdminDashboardController;
 */
 
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
+    return redirect('dashboard');
+});
+
+Route::get('/unauthenticated', function () {
+    return Inertia::render('Unauthenticated', [
+        /*'canLogin' => false, //Route::has('login'),
+        'canRegister' => false, //Route::has('register'),
         'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
+        'phpVersion' => PHP_VERSION,*/
     ]);
 });
 
-Route::get('dashboard', [AdminDashboardController::class, 'index'])->name('dashboard.index');
+Route::middleware(['trans_auth'])->get('dashboard', [AdminDashboardController::class, 'index'])->name('dashboard.index');
 
-Route::prefix('admin')->name('admin.')->middleware(['auth', 'verified', 'role: super-admin|admin|moderator|developer'])->group(function() {
+Route::prefix('admin')->name('admin.')->middleware(['trans_auth'])->middleware(['auth', 'verified', 'role: super-admin|admin|moderator|developer'])->group(function() {
     Route::resource('admins', AdminController::class)->parameters(['admins' => 'user'])->only(['index', 'update']);
     Route::resource('users', UserController::class)->except(['create', 'show', 'edit']);
     Route::resource('permissions', PermissionController::class)->except(['create', 'show', 'edit']);

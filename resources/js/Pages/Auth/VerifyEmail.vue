@@ -1,63 +1,42 @@
-<template>
-  <jet-authentication-card>
-    <template #logo>
-      <jet-authentication-card-logo />
-    </template>
+<script setup>
+import { computed } from 'vue';
+import BreezeButton from '@/Components/Button.vue';
+import BreezeGuestLayout from '@/Layouts/Guest.vue';
+import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
 
-    <div class="card-body">
-      <div class="mb-3 small text-muted">
-        Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn't receive the email, we will gladly send you another.
-      </div>
+const props = defineProps({
+    status: String,
+});
 
-      <div class="alert alert-success" role="alert" v-if="verificationLinkSent" >
-        A new verification link has been sent to the email address you provided during registration.
-      </div>
+const form = useForm();
 
-      <form @submit.prevent="submit">
-        <div class="mt-4 d-flex justify-content-between">
-          <jet-button :class="{ 'text-white-50': form.processing }" :disabled="form.processing">
-            Resend Verification Email
-          </jet-button>
+const submit = () => {
+    form.post(route('verification.send'));
+};
 
-          <inertia-link :href="route('logout')" method="post" as="button" class="btn btn-link">Log out</inertia-link>
-        </div>
-      </form>
-    </div>
-  </jet-authentication-card>
-</template>
-
-<script>
-  import JetAuthenticationCard from '@/Jetstream/AuthenticationCard'
-  import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo'
-  import JetButton from '@/Jetstream/Button'
-
-  export default {
-    components: {
-      JetAuthenticationCard,
-      JetAuthenticationCardLogo,
-      JetButton,
-    },
-
-    props: {
-      status: String
-    },
-
-    data() {
-      return {
-        form: this.$inertia.form()
-      }
-    },
-
-    methods: {
-      submit() {
-        this.form.post(this.route('verification.send'))
-      },
-    },
-
-    computed: {
-      verificationLinkSent() {
-        return this.status === 'verification-link-sent';
-      }
-    }
-  }
+const verificationLinkSent = computed(() => props.status === 'verification-link-sent');
 </script>
+
+<template>
+    <BreezeGuestLayout>
+        <Head title="Email Verification" />
+
+        <div class="mb-4 text-sm text-gray-600">
+            Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn't receive the email, we will gladly send you another.
+        </div>
+
+        <div class="mb-4 font-medium text-sm text-green-600" v-if="verificationLinkSent" >
+            A new verification link has been sent to the email address you provided during registration.
+        </div>
+
+        <form @submit.prevent="submit">
+            <div class="mt-4 flex items-center justify-between">
+                <BreezeButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                    Resend Verification Email
+                </BreezeButton>
+
+                <Link :href="route('logout')" method="post" as="button" class="underline text-sm text-gray-600 hover:text-gray-900">Log Out</Link>
+            </div>
+        </form>
+    </BreezeGuestLayout>
+</template>
